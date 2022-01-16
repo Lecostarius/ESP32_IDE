@@ -61,18 +61,39 @@ Now, I am ready to start a project right away, without VS Code.
 
 ### Detour: running a project without VS Code
 
-The environment variables used in the documentation page of Espressif are %IDF_PATH% and %userprofile%. I have no idea
-where those are. There is an examples subdirectory in "C:\Users\Thomas\Desktop\esp-idf\", which leads me to believe that
-the %IDF_PATH% directory is "C:\Users\Thomas\Desktop\esp-idf". The %userprofile% directory might be just "C:\Users\Thomas",
-so, I can create this directory everywhere. To make later deletion easier, I created this esp directory (where all my
-projects will live, later, I assume) in the same directory where the %IDF_PATH is. 
+The environment variables used in the documentation page of Espressif are %IDF_PATH% and %userprofile%. I figured out that
+%IDF_PATH% is "C:\Users\Thomas\Desktop\esp-idf\" (default from the installation script), and that %userprofile% is apparently
+just the "C:\Users\Thomas". Since the latter is used to store my projects, I am basically free to set it whereever I want,
+and to make later deletion easier, I created this "esp" directory in the same directory where the %IDF_PATH is. Later,
+I shall rename it into "my-projects" or similar (there are a lot of warnings that some directory names may not contain whitespace,
+so I better user "my-projects" and not "my projects").
+
 I did a "xcopy /e /i c:\Users\Thomas\Desktop\esp-idf\examples\get-started\hello_world hello-world" at "C:\Users\Thomas\Desktop\esp-idf\esp".
 
-In Device Manager, under "Ports (COM & LPT)" I checked for the COM port of my ESP32-DevkitC (COM3 in my case).
+In Device Manager, under "Ports (COM & LPT)" I checked for the COM port of my ESP32-DevkitC (COM4 in my case). Note that the
+system did not find the ESP32 if connected to a USB3 port, but only when it was connected to an old USB2 port!
 
 Then, I launched `idf.py set-target esp32`. This took a long while and created a bunch of build files in my hello-world 
 directory.
-Then, I launched `idf.py menuconfig`
+Then, I launched `idf.py menuconfig`. And yes, as promised, the configurator popped up:
+
+![image](https://user-images.githubusercontent.com/11603870/149661507-c44f6eb9-3ce9-45ca-9afb-2deee18d7112.png)
+
+Since the hello world project does not require any configuration I quit it without changing anything.
+
+Then, I tried `idf.py build`, which took surprisingly long for a program that does essentially nothing (a full minute or so?).
+When running it again, it noticed that there was nothing to be done, and finished immediately.
+
+Finally, I flashed it using `idf.py -p COM4 flash`, and then tested using `idf.py -p COM4 monitor` which gives me the info that
+my spi flash memory is larger than I believed, and that I have a 2-core ESP32:
+
+![image](https://user-images.githubusercontent.com/11603870/149662538-65bd44a0-6381-4b57-88b3-1567c2a88504.png)
+
+To fix it, I ran `menuconfig` again, and in Serial flasher config I changed the Flash size from 2 MB to 8 MB, and recompiled.
+Again, it took ages. After flashing and running again, the warning about the wrong size of the spi flash memory disappeared.
+Success!
+
+### Back to the VS Code plugin
 
 
 
