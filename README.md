@@ -123,10 +123,24 @@ You should consider upgrading via the 'C:\Users\Thomas\.espressif\python_env\idf
   
 The F1 ESP-IDF: Load example projects still did not work... it says "no framework selected to load examples".
 
+As recommended, I upgraded pip (which had helped another guy from the internet):
+C:\Users\Thomas\.espressif\python_env\idf4.3_py3.8_env\Scripts>python.exe -m pip install --upgrade pip
+After setting up the extension again, it did no longer complain about the wrong version of pip, but still the examples were not available.
 
-  
+Inside the c:\Users\Thomas\.vscode\extensions\espressif.esp-idf-extension-1.3.0\esp_idf_vsc_ext.log I find now an error about an On-Chip-Debugger
+that raises an error. This is probably the reason.
 
+I manually did an "Open Folder" operation in VS Code to my projects directory, the hello world subdirectory. Then, I selected the port to use
+(F1, ESP-IDF: select port to use) and the target device (F1, ESP-IDF: Set Espressive device target) and selected it to ESP-32.  
 
+Then, I did a (F1, ESP-IDF: build, flash and start a monitor) and the program compiled, flashed, and was monitored just fine.
+
+For the debugging, I hit F5. There was the program to be analyzed that was missing in the launch.json, I changed that line to
+ "program": "${workspaceFolder}/build/hello-world.elf",
+
+When trying again to hit F5, I got the following error:
+
+![image](https://user-images.githubusercontent.com/11603870/149667843-a5d4ef13-ee18-4bb1-b545-ce4fb4b041d8.png)
 
 
 
