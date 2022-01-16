@@ -33,6 +33,7 @@ time of my download (Jan 2022) the Installer version 2.12 was available (22.11.2
 This thing installs GCC, binutils, GDB, OpenOCD, and KConfig Frontends.
 When running, it complains that I do not have Long Paths Enables in my Windows registry:
 ![image](https://user-images.githubusercontent.com/11603870/149659874-ad86cbd0-50c3-4b17-981e-2b96603e4bcc.png)
+
 From a administrator cmd.exe, I ran:
 powershell -Command "&{ Start-Process -FilePath reg 'ADD HKLM\SYSTEM\CurrentControlSet\Control\FileSystem /v LongPathsEnabled /t REG_DWORD /d 1 /f' -Verb runAs}"
 and then said "Apply Fixes" and restarted the installer. This time, it did not complain. I selected release version 4.3.2 (the
