@@ -20,13 +20,16 @@ github has an article https://github.com/VSCodium/vscodium/blob/master/DOCS.md#e
 However, I decided to switch to VS Code in order to try whether the extension is worth it in the first place (and also
 whether to use the official Espressif one or the one from PlatformIO).
 
-# Original Espressif IDF
+## Original Espressif IDF
 
 The github page has an explanation how to install: https://github.com/espressif/vscode-esp-idf-extension
 
 First, I installed the extension "Espressif IDF" into my VS Code, using the (Ctrl+Shift+X) keys, searching for "ESP32".
-Then, it says, I need to install the prerequisites. Doing so can either be done manually, or by using the all-in-one
-Windows installer. The all-in-one way to install the prerequisites is a prerequisites-installer available at:
+Then, it says, I need to install the prerequisites. 
+
+### Installing prerequisites for Espressif IDF (actually: install everything)
+Doing so can either be done manually, or by using the all-in-one
+Windows installer. The all-in-one way to install the prerequisites is available at:
 https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/windows-setup.html which points to
 https://dl.espressif.com/dl/esp-idf/?idf=4.4. The idf=4.4 is pointless, you always get to the same location. At the
 time of my download (Jan 2022) the Installer version 2.12 was available (22.11.2021). 
@@ -52,6 +55,25 @@ I received two windows, one for cmd.exe and one for powershell, that looked prom
 
 
 ![image](https://user-images.githubusercontent.com/11603870/149660405-ee62b7c9-3004-4597-ab41-ace41235db58.png)
+
+The installer essentially does steps 1..4 of the https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/ explanation.
+Now, I am ready to start a project right away, without VS Code.
+
+### Detour: running a project without VS Code
+
+The environment variables used in the documentation page of Espressif are %IDF_PATH% and %userprofile%. I have no idea
+where those are. There is an examples subdirectory in "C:\Users\Thomas\Desktop\esp-idf\", which leads me to believe that
+the %IDF_PATH% directory is "C:\Users\Thomas\Desktop\esp-idf". The %userprofile% directory might be just "C:\Users\Thomas",
+so, I can create this directory everywhere. To make later deletion easier, I created this esp directory (where all my
+projects will live, later, I assume) in the same directory where the %IDF_PATH is. 
+I did a "xcopy /e /i c:\Users\Thomas\Desktop\esp-idf\examples\get-started\hello_world hello-world" at "C:\Users\Thomas\Desktop\esp-idf\esp".
+
+In Device Manager, under "Ports (COM & LPT)" I checked for the COM port of my ESP32-DevkitC (COM3 in my case).
+
+Then, I launched `idf.py set-target esp32`. This took a long while and created a bunch of build files in my hello-world 
+directory.
+Then, I launched `idf.py menuconfig`
+
 
 
 
