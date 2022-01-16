@@ -45,7 +45,9 @@ It said it would install ESP-IDF tools into C:\Users\Thomas\.espressif.
 I selected only ESP32 as Chip Target, chose FTDI Chip and CP210x driver support only, and disabled Eclipse integration. It said:
 ![image](https://user-images.githubusercontent.com/11603870/149660077-f77e42aa-afe8-443a-afc4-0b18b459a275.png)
 
-The download is "only" 760 MB instead of the 1.3 GB of the full installation. Yey!
+The download is "only" 760 MB instead of the 1.3 GB of the full installation. Yey! (at this point in time, I did not
+know that this will be OK for the standalone development environment. However, the VS Code plugin requires a full
+installation to run).
 
 After installation, I confirmed everything but did not register the ESP-IDF tools as Windows Defender exclusions,
 to avoid a risk of computer compromise. If things are too slow later, I can run the idf-env tool (look at github.com/espressif/idf-env).
@@ -93,7 +95,8 @@ my spi flash memory is larger than I believed, and that I have a 2-core ESP32:
 ![image](https://user-images.githubusercontent.com/11603870/149662538-65bd44a0-6381-4b57-88b3-1567c2a88504.png)
 
 To fix it, I ran `menuconfig` again, and in Serial flasher config I changed the Flash size from 2 MB to 8 MB, and recompiled.
-Again, it took ages. After flashing and running again, the warning about the wrong size of the spi flash memory disappeared.
+The configuration file is saved into the project directory with the name `sdkconfig`.
+Again, compilation took ages. After flashing and running again, the warning about the wrong size of the spi flash memory disappeared.
 Success!
 
 Finally, I changed the hello world program to say "Hello Lecostarius" instead. The compile process took only a second or so, good.
@@ -102,7 +105,26 @@ for compilation and if I only change the user code, turnaround times are OK!
 
 ### Back to the VS Code plugin
 
+I continued following the description in github https://github.com/espressif/vscode-esp-idf-extension and pressed F1 and typed
+ESP-IDF: Select where to save configuration. My VS Code did not offer me as described, but offered different choices. I did not
+change anything. I tried to launch press F1, then ESP-IDF: Configure ESP-IDF extension. However, this yielded a lot of errors about
+missing tools: xtensa-esp32s2-elf-gcc, xtensa-esp32s3-elf-gcc, esp32s2ulp-elf-as, riscv32-esp-elf-gcc, dfu-util are all missing.
+Probably this is because I did not select everything when doing the "install prerequisites" step before...
+I tried whether I can still continue.
+I tried F1 ESP-IDF: Load example projects, but it did not work - the "Configure" step is definitely required. So, I have to go 
+back to the installation of the prerequisites and install everything. Which I did. However, doing so created a second directory
+on the desktop, named esp-idf-2 rather than overwriting the first. Since both took 1 GB, I deleted them both, and reinstalled
+clean (full install).
+After this, I could run F1 /ESP-IDF: Configure ESP-IDF extension successfully (it offered "use existing configuration", which I chose).
 
+The only warning I got was:
+*WARNING: You are using pip version 20.3.3; however, version 21.3.1 is available.
+You should consider upgrading via the 'C:\Users\Thomas\.espressif\python_env\idf4.3_py3.8_env\Scripts\python.exe -m pip install --upgrade pip' command.*
+  
+The F1 ESP-IDF: Load example projects still did not work... it says "no framework selected to load examples".
+
+
+  
 
 
 
