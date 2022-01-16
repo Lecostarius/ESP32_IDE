@@ -96,6 +96,10 @@ To fix it, I ran `menuconfig` again, and in Serial flasher config I changed the 
 Again, it took ages. After flashing and running again, the warning about the wrong size of the spi flash memory disappeared.
 Success!
 
+Finally, I changed the hello world program to say "Hello Lecostarius" instead. The compile process took only a second or so, good.
+And the thing actually printed Hello Lecostarius. So, creating all the other files (like bootloader etc) takes 95% of the time
+for compilation and if I only change the user code, turnaround times are OK!
+
 ### Back to the VS Code plugin
 
 
