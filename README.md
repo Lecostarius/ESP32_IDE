@@ -61,6 +61,9 @@ Now, I am ready to start a project right away, without VS Code.
 
 ### Detour: running a project without VS Code
 
+**Importantly, the PATH variable is not set system-wide. So, if I just start cmd.exe, the python script "idf.py", which does
+basically everything, is unavailable. I have to select the "ESP IDF CMD4.3" shell from the start menu of Windows.**
+
 The environment variables used in the documentation page of Espressif are %IDF_PATH% and %userprofile%. I figured out that
 %IDF_PATH% is "C:\Users\Thomas\Desktop\esp-idf\" (default from the installation script), and that %userprofile% is apparently
 just the "C:\Users\Thomas". Since the latter is used to store my projects, I am basically free to set it whereever I want,
