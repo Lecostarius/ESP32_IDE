@@ -44,5 +44,19 @@ I selected only ESP32 as Chip Target, chose FTDI Chip and CP210x driver support 
 
 The download is "only" 760 MB instead of the 1.3 GB of the full installation. Yey!
 
+After installation, I confirmed everything but did not register the ESP-IDF tools as Windows Defender exclusions,
+to avoid a risk of computer compromise. If things are too slow later, I can run the idf-env tool (look at github.com/espressif/idf-env).
+I received two windows, one for cmd.exe and one for powershell, that looked promising:
+
+![image](https://user-images.githubusercontent.com/11603870/149660398-fd2fc8b1-726b-474f-ae6d-02b622e07d8c.png)
+
+
+![image](https://user-images.githubusercontent.com/11603870/149660405-ee62b7c9-3004-4597-ab41-ace41235db58.png)
+
+
+
+
+
+
 
 
