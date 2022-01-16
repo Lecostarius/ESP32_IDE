@@ -42,5 +42,7 @@ It said it would install ESP-IDF tools into C:\Users\Thomas\.espressif.
 I selected only ESP32 as Chip Target, chose FTDI Chip and CP210x driver support only, and disabled Eclipse integration. It said:
 ![image](https://user-images.githubusercontent.com/11603870/149660077-f77e42aa-afe8-443a-afc4-0b18b459a275.png)
 
+The download is "only" 760 MB instead of the 1.3 GB of the full installation. Yey!
+
 
 
