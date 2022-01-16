@@ -24,4 +24,22 @@ whether to use the official Espressif one or the one from PlatformIO).
 
 The github page has an explanation how to install: https://github.com/espressif/vscode-esp-idf-extension
 
-https://dl.espressif.com/dl/esp-idf/?idf=4.4
+First, I installed the extension "Espressif IDF" into my VS Code, using the (Ctrl+Shift+X) keys, searching for "ESP32".
+Then, it says, I need to install the prerequisites. Doing so can either be done manually, or by using the all-in-one
+Windows installer. The all-in-one way to install the prerequisites is a prerequisites-installer available at:
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/windows-setup.html which points to
+https://dl.espressif.com/dl/esp-idf/?idf=4.4. The idf=4.4 is pointless, you always get to the same location. At the
+time of my download (Jan 2022) the Installer version 2.12 was available (22.11.2021). 
+This thing installs GCC, binutils, GDB, OpenOCD, and KConfig Frontends.
+When running, it complains that I do not have Long Paths Enables in my Windows registry:
+![image](https://user-images.githubusercontent.com/11603870/149659874-ad86cbd0-50c3-4b17-981e-2b96603e4bcc.png)
+From a administrator cmd.exe, I ran:
+powershell -Command "&{ Start-Process -FilePath reg 'ADD HKLM\SYSTEM\CurrentControlSet\Control\FileSystem /v LongPathsEnabled /t REG_DWORD /d 1 /f' -Verb runAs}"
+and then said "Apply Fixes" and restarted the installer. This time, it did not complain. I selected release version 4.3.2 (the
+latest one) and did not change the suggested path although I did not like it very much (C:\Users\Thomas\Desktop\esp-idf).
+It said it would install ESP-IDF tools into C:\Users\Thomas\.espressif.
+I selected only ESP32 as Chip Target, chose FTDI Chip and CP210x driver support only, and disabled Eclipse integration. It said:
+![image](https://user-images.githubusercontent.com/11603870/149660077-f77e42aa-afe8-443a-afc4-0b18b459a275.png)
+
+
+
