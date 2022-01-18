@@ -2,9 +2,19 @@
 Steps to create a ESP32 development environment
 
 Of course, there is the Arduino IDE plugin. I have already used it; it is very straightforward to use and completely
-OK if you do not want to do anything too special. Since I would like to try the deep-sleep feature of the ESP32, I will
+OK if you do not want to do anything too special. And there is platformIO, which has very positive feedback (albeit from
+only few people). Some information about platformIO can be found e.g. here:
+https://docs.platformio.org/en/latest/tutorials/espressif32/espidf_debugging_unit_testing_analysis.html?utm_source=docs.espressif.com
+Here are the links to Espressifs codebases on
+github with both the Arduino and the IDF: https://github.com/espressif/arduino-esp32 and https://github.com/espressif/esp-idf
+
+Since I would like to try the deep-sleep feature of the ESP32, I will
 probably have to use the Espressif IDE. Big drawback: the vast majority of internet examples uses Arduino... so, possibly,
 it is going to be easier to keep it there. Lets give it a try nonetheless.
+
+https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+https://idf.espressif.com/, or pretty much the same as one pdf:
+https://readthedocs.com/projects/espressif-esp-idf/downloads/pdf/stable/
 
 I'd like to use the VSCode plugin. Reason: debugging is integrated, and I can use it on my laptop which has no Linux.
 Second choice would be the cmd.exe based installation under Windows (to have it on my laptop).
