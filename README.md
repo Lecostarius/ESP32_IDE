@@ -19,6 +19,12 @@ https://readthedocs.com/projects/espressif-esp-idf/downloads/pdf/stable/
 I'd like to use the VSCode plugin. Reason: debugging is integrated, and I can use it on my laptop which has no Linux.
 Second choice would be the cmd.exe based installation under Windows (to have it on my laptop).
 
+# Debugging using JTAG
+You need a JTAG adapter hardware to enable this, and it seems the SEGGER JLink edu (mine) is not a good choice - the internet
+is full of people asking how to get this to work. There are other options, e.g. the official JTAG adapter from Espressif.
+A nice video describes the process: https://www.youtube.com/watch?v=uq93H7T7cOQ
+
+
 # VSCode plugin vs VS Codium plugin
 There is a plugin calles "Espressif IDF", and one called "PlatformIO IDE". The former is the official one from Espressif,
 the latter is open source. The Open Source tool has 5 stars rating from 2244 users, and the official one has a 2.5 star
