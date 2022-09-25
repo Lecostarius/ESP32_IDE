@@ -1,6 +1,8 @@
 # ESP32_IDE
 Steps to create a ESP32 development environment
 
+(if you came here to find how to erase the flash of a ESP32 completely: launch the ESP-IDF PowerShell, then type "esptool.py -p COM6 -b 115200 erase_flash")
+
 Of course, there is the Arduino IDE plugin. I have already used it; it is very straightforward to use and completely
 OK if you do not want to do anything too special. And there is platformIO, which has very positive feedback (albeit from
 only few people). Some information about platformIO can be found e.g. here:
